@@ -199,7 +199,6 @@ class Lexer:
 		self.read()
 		if self.__peek != c:
 			return False
-
 		self.__peek = ' '
 		return True
 
@@ -223,8 +222,7 @@ class Lexer:
 					if not(self.__peek):
 						break
 				return self.scan()
-			elif self.readch('*'):
-				print("reading comment")
+			elif self.__peek == '*':
 				while True:
 					self.read()
 					if self.__peek == "*":
