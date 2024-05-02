@@ -223,6 +223,18 @@ class Lexer:
 					if not(self.__peek):
 						break
 				return self.scan()
+			elif self.readch('*'):
+				print("reading comment")
+				while True:
+					self.read()
+					if self.__peek == "*":
+						if self.readch("/"):
+							self.read()
+							break
+						elif not(self.__peek):
+							break
+				return self.scan()
+
 			
 		if self.__peek == '<':
 			if self.readch('='):
