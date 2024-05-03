@@ -96,8 +96,6 @@ def word_occurrences_in_vectors(vector1, vector2):
         # Agregar los recuentos a las listas respectivas
         counts_vector1.append(count_vector1)
         counts_vector2.append(count_vector2)
-        print(counts_vector1)
-        print(counts_vector2)
     
     return counts_vector1, counts_vector2
 

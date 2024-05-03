@@ -19,6 +19,8 @@ from sklearn.metrics import pairwise
 
 def preparation(suspicious_embedding, original_embeddings):
 
+    #print('original: ',original_embeddings)
+    #print('chospechoso: ',suspicious_embedding)
     cosine_result = pairwise.cosine_similarity(original_embeddings,suspicious_embedding)
 
 
