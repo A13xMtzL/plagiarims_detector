@@ -102,13 +102,15 @@ def word_occurrences_in_vectors(vector1, vector2):
 
 
 
+    
+
 
 # Example usage
-vector1 = ["apple", "banana", "apple", "orange"]
-vector2 = ["banana", "grape", "apple", "banana"]
+# vector1 = ["apple", "banana", "apple", "orange"]
+# vector2 = ["banana", "grape", "apple", "banana"]
 
-one_hot_vector1  = word_occurrences_in_vectors(vector1, vector2)
-print("One-hot vector for vector1:", one_hot_vector1)
+# one_hot_vector1  = word_occurrences_in_vectors(vector1, vector2)
+# print("One-hot vector for vector1:", one_hot_vector1)
 
 #-------------section------------- 
 #!! Sección del código para la comparación de vectores
