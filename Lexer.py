@@ -111,7 +111,8 @@ class Token:
 		elif self.__tag == Tag.NUMBER:
 			return "Numeric"
 		elif self.__tag == Tag.ID:
-			return "ID"
+			return str(self.__value)
+			#return "ID"
 		elif self.__tag >= Tag.VAR and self.__tag <= Tag.MOD:
 			return str(self.getTag()).lower()
 		elif self.__tag == Tag.STRING:

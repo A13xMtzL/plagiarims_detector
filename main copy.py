@@ -6,7 +6,8 @@ import matplotlib.pyplot as plt
 import os
 import seaborn as sns
 from preparation import preparation
-from model import embed
+# from model import embed
+from model import word_occurrences_in_vectors
 
 #Imprime matriz de confusión
 def print_confussion_matrix(y_test, y_pred):
@@ -54,7 +55,10 @@ def decision(file_path_originals, file_path_suspicious, actual_results):
     for i, processed_original_text in enumerate(processed_original_texts):
         original_embeddings.append([])
         for l in range(len(processed_original_text)):
-            original_embeddings[i].append(embed([processed_original_text[l]]))
+            # original_embeddings[i].append(embed([processed_original_text[l]]))
+            one_hot_vector1, _ = word_occurrences_in_vectors([processed_original_text[l]],[processed_original_texts[i]]) 
+            original_embeddings[i].append(one_hot_vector1)
+
 
     # Se hace la comparación entre los 2 textos
     for k, processed_suspicious_text in enumerate(processed_suspicious_texts):
@@ -63,7 +67,9 @@ def decision(file_path_originals, file_path_suspicious, actual_results):
         suspicious_plagiarsim_words = 0
         suspicious_embeddings = []
         for i in range(len(processed_suspicious_text)):
-            suspicious_embeddings.append(embed([processed_suspicious_text[i]]))
+            # suspicious_embeddings.append(embed([processed_suspicious_text[i]]))
+            _, one_hot_vector2 = word_occurrences_in_vectors([processed_original_texts[k]],[processed_suspicious_text[i]]) 
+            suspicious_embeddings.append(one_hot_vector2)
 
         for i, processed_original_text in enumerate(processed_original_texts):
             word_count_plagiarism = preparation(suspicious_embeddings, original_embeddings[i], processed_suspicious_text)
@@ -92,7 +98,7 @@ def decision(file_path_originals, file_path_suspicious, actual_results):
                 percentaje_plagiarism = 100
             print(f'\tHay un total de plagio en {suspicious_texts[k]} de: {percentaje_plagiarism:.1f}%')
             print("\t\n")
-
+    
     # Impresión de tablas
     tn, fp, fn, tp = confusion_matrix(actual_results, system_results).ravel()
     print(f'Predicted Results: {system_results}')
